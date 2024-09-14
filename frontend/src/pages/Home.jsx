@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Base64decode from "../components/Base64Decode";
 
 const Home = () => {
   const [img, setImg] = useState(null);
+
+  const [imageUrl, setImageUrl] = useState("");
 
   async function handleImageUpload(e) {
     e.preventDefault();
@@ -14,7 +17,7 @@ const Home = () => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:5000/imageUpload",
+        "http://127.0.0.1:8000/get-processed-image/",
         formData,
         {
           headers: {
@@ -22,6 +25,10 @@ const Home = () => {
           },
         }
       );
+      //   const data = response.json();
+      console.log("Response:", response);
+      console.log("Response:", response.data.message);
+      setImageUrl(response.data.message);
       // console.log("Response:", response.data);
       // alert("Product added successfully");
       // Handle response as needed
@@ -44,9 +51,14 @@ const Home = () => {
       />
       <button onClick={handleImageUpload}>Upload Image</button>
 
-      {/* <a href={} download="downloaded_image.jpg">
-        <button>Download Image</button>
-      </a> */}
+      {imageUrl && (
+        <>
+          <Base64decode base64String={imageUrl} />
+          <a href={imageUrl} download="image.jpg">
+            <button>Download Image</button>
+          </a>
+        </>
+      )}
     </div>
   );
 };
