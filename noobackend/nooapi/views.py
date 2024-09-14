@@ -18,8 +18,10 @@ def process_image_and_return_image(request:HttpRequest) -> Response:
         print(image)
 
         processed_image = process_using_ML(image=image)
+
+        image_base64 = image_to_base64(image=processed_image)
         return Response({
-            'message': processed_image
+            'message': image_base64
         })
 
 def process_using_ML(image):
