@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
-import Base64decode from "../components/Base64Decode";
+import { ImageContext } from "../context/Base64Decode";
 
 const Home = () => {
   const [img, setImg] = useState(null);
 
-  const [imageUrl, setImageUrl] = useState("");
+  const { base64String, setBase64String, imageUrl } = useContext(ImageContext);
+  //   const [imageUrl1, setImageUrl] = useState("");
 
   async function handleImageUpload(e) {
     e.preventDefault();
@@ -28,7 +29,8 @@ const Home = () => {
       //   const data = response.json();
       console.log("Response:", response);
       console.log("Response:", response.data.message);
-      setImageUrl(response.data.message);
+      //   setImageUrl(response.data.message);
+      setBase64String(response.data.message);
       // console.log("Response:", response.data);
       // alert("Product added successfully");
       // Handle response as needed
@@ -38,24 +40,31 @@ const Home = () => {
     }
   }
   return (
-    <div>
-      <h1>Hellow rold</h1>
-
-      <input
-        type="file"
-        accept="image/*"
-        id="file-upload"
-        name="myFile"
-        required
-        onChange={(e) => setImg(e.target.files[0])}
-      />
-      <button onClick={handleImageUpload}>Upload Image</button>
+    <div className="flex flex-col items-center justify-center h-screen gap-4">
+      <div>
+        <input
+          type="file"
+          accept="image/*"
+          id="file-upload"
+          name="myFile"
+          required
+          onChange={(e) => setImg(e.target.files[0])}
+          className="mb-4" // Add margin-bottom for spacing
+        />
+      </div>
+      <button
+        className="bg-blue-500 text-white p-4 rounded-md hover:bg-blue-600 transition-colors"
+        onClick={handleImageUpload}
+      >
+        Upload Image
+      </button>
 
       {imageUrl && (
         <>
-          <Base64decode base64String={imageUrl} />
           <a href={imageUrl} download="image.jpg">
-            <button>Download Image</button>
+            <button className="bg-blue-500 text-white p-4 rounded-md hover:bg-blue-600 transition-colors">
+              Download Image
+            </button>
           </a>
         </>
       )}
