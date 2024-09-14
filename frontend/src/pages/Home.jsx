@@ -44,9 +44,9 @@ const Home = () => {
       />
       <button onClick={handleImageUpload}>Upload Image</button>
 
-      <a href={} download="downloaded_image.jpg">
+      {/* <a href={} download="downloaded_image.jpg">
         <button>Download Image</button>
-      </a>
+      </a> */}
     </div>
   );
 };
