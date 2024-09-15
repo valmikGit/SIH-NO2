@@ -2,7 +2,7 @@
 This is the code base for downscaling of air quality map of NO2 with AI/ML.
 
 ## Image Refinement and Resolution Enhancement-using-SRCNN
-Deploying the super-resolution convolution neural network (SRCNN) using Keras
+Deploying the super-resolution convolution neural network (SRCNN) using Keras 
 
 ### SRCNN
 The SRCNN is a deep convolutional neural network that learns end-to-end mapping of low resolution to high resolution images. As a result, we can use it to improve the image quality of low resolution images.
