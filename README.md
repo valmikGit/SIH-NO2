@@ -44,3 +44,6 @@ We will also be using OpenCV to pre and post process our images. Also, there is 
    - modcrop(): #necessary because when we run images through SRCNN based on the kernel sizes and convulational layers, we are going to lose some of these outside pixels,the images are going to get smaller and that's why it is neccesary to have a divisible image size,ie, divisible by scale by cropping the images size
   
    - shave(): crop offs the bordersize from all sides of the image
+
+### Frontend
+- Till now, we have created a page which takes any image uploads it to our page, and you can download that image.The plan is to feed this image to our ml model which we have mentioned before and this will provide us with a high resolution image which you can then download them for better analysis.
