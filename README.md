@@ -57,6 +57,7 @@ In the satellite imagery domain, clouds often obstruct large portions of an imag
 This combined approach allows us to generate high-quality, cloud-free satellite images that can be used for further analysis, overcoming the limitations posed by weather conditions during satellite data acquisition.
 
 ### Frontend:
+<img width="960" alt="{40F4E5A1-CC4A-4B85-B09A-29A7D337264E}" src="https://github.com/user-attachments/assets/32e72764-69ee-435c-ad2a-5d2360a312d9">
 - Till now, we have created a page which takes any image uploads it to our page, and you can download that image. The plan is to feed this image to our ML model which we have mentioned before and this will provide us with a high resolution image which you can then download them for better analysis.
 - As an example, we have added a heat map in the frontend. This is how we are planning, roughly, to display the images to the user.
 
