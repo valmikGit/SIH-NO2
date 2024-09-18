@@ -50,4 +50,5 @@ We will also be using OpenCV to pre and post process our images. Also, there is 
 - As an example, we have added a heat map in the frontend. This is how we are planning, roughly, to display the images to the user.
 
 ### Backend:
-- Till now, in the backend, there is one API which receives an image from the frontend and returns it back to the frontend. This was to do integration testing. Now, we will proceed to sending the image sent to the backend, from the frontend, to the ML model and then sending the processed image (output of the ML model) via the backend, to the frontend.
+- Till now, in the backend, there is one API which receives an image from the frontend and returns it back to the frontend. This was to do integration testing.
+- Now, we will proceed to sending the image sent to the backend, from the frontend, to the ML model and then sending the processed image (output of the ML model) via the backend, to the frontend. For this, we will save the ML model in a .h5 file whiich will be imported in the Django backend and used to process the image.
