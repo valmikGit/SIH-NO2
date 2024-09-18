@@ -45,5 +45,8 @@ We will also be using OpenCV to pre and post process our images. Also, there is 
   
    - shave(): crop offs the bordersize from all sides of the image
 
-### Frontend
-- Till now, we have created a page which takes any image uploads it to our page, and you can download that image.The plan is to feed this image to our ml model which we have mentioned before and this will provide us with a high resolution image which you can then download them for better analysis.
+### Frontend:
+- Till now, we have created a page which takes any image uploads it to our page, and you can download that image. The plan is to feed this image to our ML model which we have mentioned before and this will provide us with a high resolution image which you can then download them for better analysis.
+
+### Backend:
+- Till now, in the backend, there is one API which receives an image from the frontend and returns it back to the frontend. This was to do integration testing. Now, we will proceed to sending the image sent to the backend, from the frontend, to the ML model and then sending the processed image (output of the ML model) via the backend, to the frontend.
