@@ -24,10 +24,13 @@ function FinalFilter() {
     setLoading(true); // Set loading to true
 
     try {
-      const response = await fetch("http://localhost:5000/process_image", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "http://127.0.0.1:8000/get-processed-image/",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       if (response.ok) {
         const result = await response.json();
@@ -72,7 +75,11 @@ function FinalFilter() {
             required
             onChange={handleImageChange}
           />
-          <button type="submit" disabled={loading}>
+          <button
+            type="submit"
+            disabled={loading}
+            className="bg-blue-500 text-white px-4 py-3 rounded-md hover:bg-blue-600 transition-colors"
+          >
             Submit
           </button>
         </form>
