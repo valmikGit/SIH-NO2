@@ -40,3 +40,55 @@
 .read-the-docs {
   color: #888;
 }
+
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+button {
+  margin-left: 10px;
+}
+
+.preview {
+  margin-top: 20px;
+}
+
+.preview img {
+  max-width: 300px;
+  margin-top: 10px;
+  border: 2px solid #ccc;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#result img {
+  max-width: 300px;
+  margin-top: 10px;
+  border: 2px solid #ccc;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.spinner {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.image-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px; /* Adds space between images */
+  margin-top: 20px;
+}
+
+.image-container {
+  text-align: center;
+}
