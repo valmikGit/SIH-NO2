@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from django.http import HttpRequest, HttpResponse
 from PIL import Image
 import base64
-from ML_MODEL.srcnn_module import predict
+from srcnn_module import predict
 import cv2
 import numpy as np
 import io
