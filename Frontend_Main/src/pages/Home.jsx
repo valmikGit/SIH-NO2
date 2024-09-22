@@ -5,7 +5,7 @@ import { ImageContext } from "../context/Base64Decode";
 const Home = () => {
   const [img, setImg] = useState(null);
 
-  const { base64String, setBase64String, imageUrl } = useContext(ImageContext);
+  const { base64String, setBase64String, imageUrl,  } = useContext(ImageContext);
   //   const [imageUrl1, setImageUrl] = useState("");
 
   async function handleImageUpload(e) {

@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { ImageContext } from "../context/Base64Decode";
 
 function FinalFilter() {
   const [selectedImage, setSelectedImage] = useState(null); // For image preview
   const [zoomedImage, setZoomedImage] = useState(null);
+  const [zoomed_image_url , setZoomed_Image_Url] = useState('');
+  const [superResImage_url, setSuperResImage_Url] = useState('');
   const [superResImage, setSuperResImage] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false); // Loading state
+  const { base64String, setBase64String, imageUrl, } = useContext(ImageContext);
 
   // Handle file input changes and preview the image
   const handleImageChange = (e) => {
@@ -18,25 +22,28 @@ function FinalFilter() {
     e.preventDefault();
 
     const formData = new FormData();
-    const imageFile = e.target.image.files[0];
+    const imageFile = e.target.elements.image.files[0];
     formData.append("image", imageFile);
 
     setLoading(true); // Set loading to true
 
     try {
-      const response = await fetch("http://localhost:5000/process_image", {
+      const response = await fetch("http://127.0.0.1:8000/get-processed-image/", {
         method: "POST",
         body: formData,
       });
 
       if (response.ok) {
         const result = await response.json();
-
+        console.log(result);
+        
+        setZoomed_Image_Url(setBase64String(result.zoomed_img_base64))
+        setSuperResImage_Url(setBase64String(result.super_res_img_base64))
         // Set base64 images to the state
-        setZoomedImage(`data:image/jpeg;base64,${result.zoomed_image}`);
-        setSuperResImage(
-          `data:image/jpeg;base64,${result.super_resolved_image}`
-        );
+        // setZoomedImage(`data:image/jpeg;base64,${result.zoomed_image}`);
+        // setSuperResImage(
+        // `data:image/jpeg;base64,${result.super_resolved_image}`
+        // );
       } else {
         setError("Error processing the image");
       }
@@ -56,6 +63,10 @@ function FinalFilter() {
     setError("");
     setLoading(false);
   };
+
+  useEffect(() => {
+    console.log(zoomed_image_url, superResImage_url)
+  }, [zoomed_image_url, superResImage_url])
 
   return (
     <div className="App">
@@ -111,7 +122,7 @@ function FinalFilter() {
                   download="zoomed_image.jpg"
                   className="download-link"
                 >
-                  <img src={zoomedImage} alt="Zoomed" />
+                  <img src={zoomed_image_url} alt="Zoomed" />
                 </a>
               </div>
             )}
@@ -124,7 +135,7 @@ function FinalFilter() {
                   download="super_resolved_image.jpg"
                   className="download-link"
                 >
-                  <img src={superResImage} alt="Super Resolved" />
+                  <img src={setSuperResImage_Url} alt="Super Resolved" />
                 </a>
               </div>
             )}
