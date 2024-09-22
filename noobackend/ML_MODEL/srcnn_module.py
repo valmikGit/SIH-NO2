@@ -70,7 +70,7 @@ def predict(img, model_weights_path, zoom_factor=2):
     # Load the SRCNN model and weights
     srcnn = build_srcnn_model()
     srcnn.load_weights(model_weights_path)
-
+    print(2)
     # Load and zoom the image
     # img = cv2.imread(image_path)
     # if img is None:
