@@ -20,10 +20,13 @@ def process_image_and_return_image(request: HttpRequest) -> Response:
     image_file = request.FILES['image']
     try:
         image = Image.open(image_file)
+        print("Here 1")
     except Exception as e:
         return Response({'error': f'Invalid image format: {str(e)}'}, status=400)
 
+    print("Here 2")
     processed_dict = process_using_ML(image)
+    print("Here 3")
 
     if not processed_dict:
         return Response({'error': 'Failed to process the image'}, status=500)
@@ -37,10 +40,11 @@ def process_image_and_return_image(request: HttpRequest) -> Response:
 def process_using_ML(image: Image.Image) -> dict:
     image_np = np.array(image)
 
+    print("Here 4")
     if image_np.shape[2] == 4:
         image_np = cv2.cvtColor(image_np, cv2.COLOR_RGBA2RGB)
 
-    img , zoomed_img, super_res_img = predict(image_np, model_weights_path=r'C:\Users\Valmik Belgaonkar\OneDrive\Desktop\SIH-NO2\noobackend\ML_MODEL\3051crop_weight_200.h5')
+    img , zoomed_img, super_res_img = predict(image_np, model_weights_path=r'C:\Users\mitta\OneDrive - iiit-b\Documents\SIH\SIH-NO2\noobackend\ML_MODEL\3051crop_weight_200.h5')
 
     img_base64 = image_to_base64(img)
     zoomed_img_base64 = image_to_base64(zoomed_img)
