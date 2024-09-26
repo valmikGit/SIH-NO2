@@ -258,9 +258,13 @@ function FinalFilter() {
 
       {/* Display image preview */}
       {selectedImage && (
-        <div className="preview">
+        <div className="preview  ">
           <h4>Selected Image Preview:</h4>
-          <img src={selectedImage} alt="Selected" style={{ width: "200px" }} />
+          <img
+            src={selectedImage}
+            alt="Selected"
+            // style={{ width: "350px", height: "200px" }}
+          />
         </div>
       )}
 

@@ -44,7 +44,7 @@ def process_using_ML(image: Image.Image) -> dict:
     if image_np.shape[2] == 4:
         image_np = cv2.cvtColor(image_np, cv2.COLOR_RGBA2RGB)
 
-    img , zoomed_img, super_res_img = predict(image_np, model_weights_path=r'C:\Users\mitta\OneDrive - iiit-b\Documents\SIH\SIH-NO2\noobackend\ML_MODEL\3051crop_weight_200.h5')
+    img , zoomed_img, super_res_img = predict(image_np, model_weights_path=r'./ML_MODEL/3051crop_weight_200.h5')
 
     img_base64 = image_to_base64(img)
     zoomed_img_base64 = image_to_base64(zoomed_img)

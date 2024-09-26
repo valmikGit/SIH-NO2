@@ -56,10 +56,14 @@ button {
 
 .preview {
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .preview img {
-  max-width: 300px;
+  max-width: 400px;
+  height: 250px;
   margin-top: 10px;
   border: 2px solid #ccc;
   padding: 5px;
